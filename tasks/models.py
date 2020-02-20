@@ -3,7 +3,14 @@ from django.db import models
 
 
 class Task(models.Model):
-	task_type 	=	models.PositiveIntegerField(default = 0)
+	TASK_TYPE_CHOICES = (
+		(1, "Type 1"),
+		(2, "Type 2"),
+		(3, "Type 3"),
+		(3, "Type 4"),
+	)
+
+	task_type 	=	models.IntegerField(choices = TASK_TYPE_CHOICES )
 	task_desc 	=	models.TextField(max_length = 300, blank = True, null = True)
 
 	created_on  =   models.DateTimeField(auto_now_add   = True)
@@ -12,16 +19,16 @@ class Task(models.Model):
 
 
 class TaskTracker(models.Model):
-	DAY_CHOICES = (
+	UPDATE_TYPE_CHOICES = (
 			(1, "Per Day"),
 			(2, "Per Week"),
 			(3, "Per Month"),
 		)
 
-	task_type   =	models.ForeignKey(Task, on_delete = models.CASCADE)
-	update_type	=	models.IntegerField(choices = DAY_CHOICES )
-	email 		=	models.EmailField(max_length=254 )
+	task_type   	=	models.ForeignKey(Task, on_delete = models.CASCADE)
+	update_type		=	models.IntegerField(choices = UPDATE_TYPE_CHOICES )
+	email 			=	models.EmailField(max_length = 254 )
 
-	created_on  =   models.DateTimeField(auto_now_add   = True)
-	updated_on  =   models.DateTimeField(auto_now       = True)
+	created_on  	=   models.DateTimeField(auto_now_add   = True)
+	updated_on  	=   models.DateTimeField(auto_now       = True)
 

@@ -20,6 +20,10 @@ from django.conf.urls import url
 urlpatterns = [
     path('', admin.site.urls),
 
+    #apps
+    url(r'^api/v1/tasks/',  include('tasks.urls')),
+
+    #3p
     url(r'^api-auth/', include('rest_framework.urls'))
 ]
 
