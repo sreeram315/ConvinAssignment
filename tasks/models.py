@@ -16,6 +16,9 @@ class Task(models.Model):
 	created_on  =   models.DateTimeField(auto_now_add   = True)
 	updated_on  =   models.DateTimeField(auto_now       = True)
 
+	def __str__(self):
+		return f'ID: {self.id} - Type: {self.task_type} - {self.task_desc[:10]}'
+
 
 
 class TaskTracker(models.Model):
@@ -31,4 +34,7 @@ class TaskTracker(models.Model):
 
 	created_on  	=   models.DateTimeField(auto_now_add   = True)
 	updated_on  	=   models.DateTimeField(auto_now       = True)
+
+	def __str__(self):
+		return f'ID: {self.id} - TaskType: {self.task_type.id} - Email: {self.email}'
 

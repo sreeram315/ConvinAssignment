@@ -4,8 +4,9 @@ from rest_framework.views import APIView
 from rest_framework import viewsets, permissions, exceptions, response
 from rest_framework.exceptions import APIException
 
-from .serializers import TasksGetRequestSerializer, TasksGetResponseSerializer, TaskCreateRequestSerializer
-from .models import Task
+from .serializers import  ( TasksGetRequestSerializer, TasksGetResponseSerializer, TaskCreateRequestSerializer,
+							TaskTrackerGetRequestSerializer, TaskTrackerCreateRequestSerializer, TaskTrackerGetResponseSerializer )
+from .models import Task, TaskTracker
 
 
 
@@ -67,9 +68,68 @@ class TaskCreateAPI(APIView):
 									)
 		except:
 			raise APIException("Object Create Error")
-			
+
 		task_data = TaskGetAPI().return_specific_task(task_id = obj.id)
 		return task_data
+
+
+
+class TaskTrackerGetAPI(APIView):
+	permission_classes = (
+        permissions.AllowAny,
+    )
+
+	def get(self, request):
+		'''
+		INPUT: task_tracker_id(INT)
+		OUTPUT: Data of Task Tracker requested
+		'''
+		serializer = TaskTrackerGetRequestSerializer(data = self.request.query_params)
+		if not serializer.is_valid():
+			raise exceptions.ValidationError(serializer.errors)
+
+		task_tracker_id 	= 	int(serializer.data['task_tracker_id'])
+		task_tracker 		= 	TaskTracker.objects.filter(id = task_tracker_id)
+
+		if not task_tracker.exists():
+			raise APIException(f"Task tracker does not exist with id = {task_tracker_id}")
+		data 	= 	TaskTrackerGetResponseSerializer(task_tracker.first()).data
+		print(data)
+		return response.Response(data)
+
+
+
+class TaskTrackerCreateAPI(APIView):
+	permission_classes = (
+        permissions.AllowAny,
+    )
+
+	def post(self, request):
+		'''
+		INPUT: task_id(INT), update_type(INT), email(STRING)
+		Func: Create new Task Tracker
+		'''
+		serializer = TaskTrackerCreateRequestSerializer(data = self.request.data)
+		if not serializer.is_valid():
+			raise exceptions.ValidationError(serializer.errors)
+
+		task_id 	=	serializer.data['task_id']
+		task 		= 	Task.objects.filter(id = task_id)
+		if not task.exists():
+			raise APIException(f"Task does not exist with id = {task_id}")
+
+		try:
+			obj = TaskTracker.objects.create(
+										task_type 	= task.first(),
+										update_type = serializer.data['update_type'],
+										email 		= serializer.data['email']
+									)
+		except:
+			raise APIException("Object Create Error")
+
+		data = TaskTrackerGetResponseSerializer(obj).data
+		return response.Response(data)
+
 
 
 
