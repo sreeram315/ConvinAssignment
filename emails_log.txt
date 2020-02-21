@@ -49,3 +49,105 @@
 
 ============   ==========   ==========
 ******************************************************************************************************
+
+***************** SENDING REMAINDERS ON 2020-02-21 *********************************** 
+
+============   DAILY REMAINDERS   ==========
+
+	--------------------------------------------
+	 <QuerySet [<Task: ID: 2 - Type: 1 - new task>, <Task: ID: 7 - Type: 1 - new task>]>
+	Sending email to sreeramajsn@mgial.com with UPDATE: Tasks 2,7,  were created today
+	--------------------------------------------
+
+	--------------------------------------------
+	 <QuerySet [<Task: ID: 2 - Type: 1 - new task>, <Task: ID: 7 - Type: 1 - new task>]>
+	Sending email to askjdbj@gmail.com with UPDATE: Tasks 2,7,  were created today
+	--------------------------------------------
+
+============   ==========   ==========
+******************************************************************************************************
+
+***************** SENDING REMAINDERS ON 2020-02-21 *********************************** 
+
+============   DAILY REMAINDERS   ==========
+
+	--------------------------------------------
+	 <QuerySet [<Task: ID: 2 - Type: 1 - new task>, <Task: ID: 7 - Type: 1 - new task>]>
+	Sending email to sreeramajsn@mgial.com with UPDATE: Tasks 2,7,  were created today
+	--------------------------------------------
+
+	--------------------------------------------
+	 <QuerySet [<Task: ID: 2 - Type: 1 - new task>, <Task: ID: 7 - Type: 1 - new task>]>
+	Sending email to askjdbj@gmail.com with UPDATE: Tasks 2,7,  were created today
+	--------------------------------------------
+
+============   ==========   ==========
+******************************************************************************************************
+
+***************** SENDING REMAINDERS ON 2020-02-21 *********************************** 
+
+============   DAILY REMAINDERS   ==========
+
+	--------------------------------------------
+	 <QuerySet [<Task: ID: 2 - Type: 1 - new task>, <Task: ID: 7 - Type: 1 - new task>]>
+	Sending email to sreeramajsn@mgial.com with UPDATE: Tasks 2,7,  were created today
+	--------------------------------------------
+
+	--------------------------------------------
+	 <QuerySet [<Task: ID: 2 - Type: 1 - new task>, <Task: ID: 7 - Type: 1 - new task>]>
+	Sending email to askjdbj@gmail.com with UPDATE: Tasks 2,7,  were created today
+	--------------------------------------------
+
+============   ==========   ==========
+******************************************************************************************************
+
+***************** SENDING REMAINDERS ON 2020-02-21 *********************************** 
+
+============   DAILY REMAINDERS   ==========
+
+	--------------------------------------------
+	 <QuerySet [<Task: ID: 2 - Type: 1 - new task>, <Task: ID: 7 - Type: 1 - new task>]>
+	Sending email to sreeramajsn@mgial.com with UPDATE: Tasks 2,7,  were created today
+	--------------------------------------------
+
+	--------------------------------------------
+	 <QuerySet [<Task: ID: 2 - Type: 1 - new task>, <Task: ID: 7 - Type: 1 - new task>]>
+	Sending email to askjdbj@gmail.com with UPDATE: Tasks 2,7,  were created today
+	--------------------------------------------
+
+============   ==========   ==========
+******************************************************************************************************
+
+***************** SENDING REMAINDERS ON 2020-02-21 *********************************** 
+
+============   DAILY REMAINDERS   ==========
+
+	--------------------------------------------
+	 <QuerySet [<Task: ID: 2 - Type: 1 - new task>, <Task: ID: 7 - Type: 1 - new task>]>
+	Sending email to sreeramajsn@mgial.com with UPDATE: Tasks 2,7,  were created today
+	--------------------------------------------
+
+	--------------------------------------------
+	 <QuerySet [<Task: ID: 2 - Type: 1 - new task>, <Task: ID: 7 - Type: 1 - new task>]>
+	Sending email to askjdbj@gmail.com with UPDATE: Tasks 2,7,  were created today
+	--------------------------------------------
+
+============   ==========   ==========
+******************************************************************************************************
+
+***************** SENDING REMAINDERS ON 2020-02-21 *********************************** 
+
+============   DAILY REMAINDERS   ==========
+
+	--------------------------------------------
+	 <QuerySet [<Task: ID: 2 - Type: 1 - new task>, <Task: ID: 7 - Type: 1 - new task>]>
+	Sending email to sreeramajsn@mgial.com with UPDATE: Tasks 2,7,  were created today
+	--------------------------------------------
+
+	--------------------------------------------
+	 <QuerySet [<Task: ID: 2 - Type: 1 - new task>, <Task: ID: 7 - Type: 1 - new task>]>
+	Sending email to askjdbj@gmail.com with UPDATE: Tasks 2,7,  were created today
+	--------------------------------------------
+
+============   ==========   ==========
+******************************************************************************************************

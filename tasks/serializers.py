@@ -3,6 +3,7 @@ from rest_framework import serializers
 from .models import Task, TaskTracker, TASK_TYPE_CHOICES
 from . import utils
 
+
 # Task Serializers
 class TasksGetRequestSerializer(serializers.Serializer):
 	task_id 		= 	serializers.IntegerField(required = False)
@@ -48,6 +49,8 @@ class TaskTrackerGetResponseSerializer(serializers.ModelSerializer):
 
 	def get_update_type(self, obj):
 		return utils.return_update_type_str_for_int(obj.update_type)
+
+
 
 class TaskTrackerCreateRequestSerializer(serializers.Serializer):
 	task_type 			=	serializers.IntegerField()
