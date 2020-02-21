@@ -7,9 +7,9 @@ from rest_framework.exceptions import APIException
 from .serializers import  ( TasksGetRequestSerializer, TasksGetResponseSerializer, TaskCreateRequestSerializer,
 							TaskTrackerGetRequestSerializer, TaskTrackerCreateRequestSerializer, TaskTrackerGetResponseSerializer )
 from .models import Task, TaskTracker
+from .tasks import sleepy
 
-
-
+#Task APIs
 class TaskGetAPI(APIView):
 	permission_classes = (
         permissions.AllowAny,
@@ -74,6 +74,7 @@ class TaskCreateAPI(APIView):
 
 
 
+# Task Tracker APIs
 class TaskTrackerGetAPI(APIView):
 	permission_classes = (
         permissions.AllowAny,
@@ -113,25 +114,28 @@ class TaskTrackerCreateAPI(APIView):
 		if not serializer.is_valid():
 			raise exceptions.ValidationError(serializer.errors)
 
-		task_id 	=	serializer.data['task_id']
-		task 		= 	Task.objects.filter(id = task_id)
-		if not task.exists():
-			raise APIException(f"Task does not exist with id = {task_id}")
-
-		try:
-			obj = TaskTracker.objects.create(
-										task_type 	= task.first(),
-										update_type = serializer.data['update_type'],
-										email 		= serializer.data['email']
-									)
-		except:
-			raise APIException("Object Create Error")
+		# try:
+		obj = TaskTracker.objects.create(
+											task_type 	= serializer.data['task_type'],
+											update_type = serializer.data['update_type'],
+											email 		= serializer.data['email']
+										)
+		# except:
+		# 	raise APIException("Object Create Error")
 
 		data = TaskTrackerGetResponseSerializer(obj).data
 		return response.Response(data)
 
 
 
+class TestAPI(APIView):
+	permission_classes = (
+        permissions.AllowAny,
+    )
+
+	def get(self, request):
+		sleepy.delay(10)
+		return response.Response('YELLO')
 
 
 

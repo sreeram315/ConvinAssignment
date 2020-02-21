@@ -13,8 +13,6 @@ class TaskAdmin(admin.ModelAdmin):
 
 
 
-
-
 @admin.register(TaskTracker)
 class TaskTrackerAdmin(admin.ModelAdmin):
     fields              =   ("task_type", "update_type", "email")
