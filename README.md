@@ -24,6 +24,8 @@ Use the following link:
 
 https://www.getpostman.com/collections/233ba565a493c17a649e
 
+While testing please add an environmental variable call URL with value as local host domain.
+
 
 
 ## Convin Assignment backend setup
@@ -67,7 +69,7 @@ if you do a   `$ pip freeze`   now, you will see that you have no packages insta
 
 4. To install all the packages required for the project (*mentioned in requirement.txt file*), do:
 
-   `$ pip install -r requirement.txt`
+   `$ pip install -r requirements.txt`
 
 Proceed when all the packages are successfully installed.
 
