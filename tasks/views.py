@@ -1,13 +1,16 @@
+from asmt import constants
+import datetime
 from django.shortcuts import render
 
 from rest_framework.views import APIView
 from rest_framework import viewsets, permissions, exceptions, response
 from rest_framework.exceptions import APIException
+import sys 
 
 from .serializers import  ( TasksGetRequestSerializer, TasksGetResponseSerializer, TaskCreateRequestSerializer,
 							TaskTrackerGetRequestSerializer, TaskTrackerCreateRequestSerializer, TaskTrackerGetResponseSerializer )
 from .models import Task, TaskTracker
-from .tasks import sleepy
+
 
 #Task APIs
 class TaskGetAPI(APIView):
@@ -128,13 +131,82 @@ class TaskTrackerCreateAPI(APIView):
 
 
 
-class TestAPI(APIView):
+class SendEmails(APIView):
 	permission_classes = (
         permissions.AllowAny,
     )
 
+	def send_daily_emails(self):
+		print('\n============   DAILY REMAINDERS   ==========')
+		task_trackers 	=	TaskTracker.objects.filter(update_type = constants.UPDATE_CHOICE_PER_DAY)
+		for task_tracker in task_trackers:
+			print('\n\t--------------------------------------------')
+			tasks 	=	Task.objects.filter(
+							task_type 			= task_tracker.task_type,
+							created_on__date 	= datetime.datetime.today().date()
+					)
+			print('\t' , tasks)
+			task_ids = [t.id for t in tasks]
+			print(f'\tSending email to {task_tracker.email} with UPDATE: Tasks', ''.join(f'{str(t)},' for t in task_ids), ' were created today')
+			print('\t--------------------------------------------')
+		print('\n============   ==========   ==========')
+
+	def send_weekly_emails(self):
+		today = datetime.datetime.today()
+		if today.weekday() != 0:		#Not Monday
+			return 
+		print('\n============   WEEKLY REMAINDERS   ==========')
+		task_trackers 	=	TaskTracker.objects.filter(update_type = constants.UPDATE_CHOICE_PER_DAY)
+		tasks_after 	=	datetime.datetime.today().date() - datetime.timedelta(days = 7)
+		for task_tracker in task_trackers:
+			print('\n\t--------------------------------------------')
+			tasks 	=	Task.objects.filter(
+							task_type 				= task_tracker.task_type,
+							created_on__date__gte 	= datetime.datetime.today().date()
+					)
+			print('\t' , tasks)
+			task_ids = [t.id for t in tasks]
+			print(f'\tSending email to {task_tracker.email} with UPDATE: Tasks', ''.join(f'{str(t)},' for t in task_ids), ' were created during last week')
+			print('\t--------------------------------------------')
+		print('\n============   ==========   ==========')
+
+
+	def send_monthly_emails(self):
+		today = datetime.datetime.today()
+		if today.day != 1:		#Not 1st day of the month
+			return 
+		print('\n============   MONTHLY REMAINDERS   ==========')
+		task_trackers 	=	TaskTracker.objects.filter(update_type = constants.UPDATE_CHOICE_PER_DAY)
+		today 			=	datetime.datetime.now().date()
+		month = today.month - 1
+		if month == 0:
+			month = 12
+		tasks_after 	=	datetime.datetime(today.year, month, today.day)
+
+		for task_tracker in task_trackers:
+			print('\n\t--------------------------------------------')
+			tasks 	=	Task.objects.filter(
+							task_type 				= task_tracker.task_type,
+							created_on__date__gte 	= datetime.datetime.today().date()
+					)
+			print('\t' , tasks)
+			task_ids = [t.id for t in tasks]
+			print(f'\tSending email to {task_tracker.email} with UPDATE: Tasks', ''.join(f'{str(t)},' for t in task_ids), ' were created during last month')
+			print('\t--------------------------------------------')
+		print('\n============   ==========   ==========')
+
+	def do(self):
+		handle 		=	open('emails_log.txt', 'a+')
+		sys.stdout 	=	handle
+		print(f"\n***************** SENDING REMAINDERS ON {datetime.datetime.now().date()} *********************************** ")
+		self.send_daily_emails()
+		self.send_weekly_emails()
+		self.send_monthly_emails()
+		print('******************************************************************************************************')
+		handle.close()
+
 	def get(self, request):
-		sleepy.delay(10)
+		self.do()
 		return response.Response('YELLO')
 
 

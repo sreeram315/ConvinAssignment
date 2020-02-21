@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from .views import TaskCreateAPI, TaskGetAPI, TaskTrackerGetAPI, TaskTrackerCreateAPI, TestAPI
+from .views import TaskCreateAPI, TaskGetAPI, TaskTrackerGetAPI, TaskTrackerCreateAPI, SendEmails
 
 
 
@@ -9,7 +9,7 @@ from .views import TaskCreateAPI, TaskGetAPI, TaskTrackerGetAPI, TaskTrackerCrea
 
 urlpatterns = [
 				
-				url(r'test/', TestAPI.as_view(), name = 'TestAPI'),
+				url(r'test/', SendEmails.as_view(), name = 'SendEmails'),
 
 				url(r'task-type/get/', TaskGetAPI.as_view(), name = 'task_get'),
 				url(r'task-type/create/', TaskCreateAPI.as_view(), name = 'task_create'),
