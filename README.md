@@ -1,5 +1,28 @@
-# ConvinAssignment
-Convin Assignment 20022020
+## **Index**
+
+1. Documentation
+2. Postman Collection
+3. Setup
+
+
+
+## **Documentation**
+
+------
+
+Find it here: 
+
+https://documenter.getpostman.com/view/8124575/SzKTwJyH?version=latest
+
+
+
+## **Postman Collection**
+
+------
+
+Use the following link:
+
+https://www.getpostman.com/collections/233ba565a493c17a649e
 
 
 
